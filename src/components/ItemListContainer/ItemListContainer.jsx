@@ -1,9 +1,12 @@
 import React from 'react'
 
-function ItemListContainer({titulo}) {
+function ItemListContainer({titulo, children}) {
     
   return (
-    <h1>{titulo}</h1>
+    <>
+      <h1>{titulo}</h1>
+      <div>{children}</div>
+    </>
   )
 }
 
