@@ -5,6 +5,8 @@ import './components/NavBar/NavBar.css'
 import './components/ItemListContainer/ItemListContainer.css'
 import './components/CartWidget/CartWidget.css'
 import './components/ItemCount/ItemCount.css'
+import './components/ItemList/ItemList.css'
+import './components/Item/Item.css'
 import './App.css';
 
 function App() {

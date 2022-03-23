@@ -4,6 +4,7 @@ import Item from '../Item/Item';
 
 function ItemList() {
     const [items, setItems] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     const getProductos = new Promise((resolve, reject) =>{
         setTimeout(()=>{
@@ -15,8 +16,9 @@ function ItemList() {
         try {
             const data = await getProductos;
             setItems(data);
+            setLoading(false);
         } catch (error) {
-            console.log(error)
+            console.log(error);
             alert('Los productos no cargaron correctamente');
         }
     }
@@ -28,15 +30,17 @@ function ItemList() {
 
   return (
 
-    <div className="contenedor">
-        {items.map((item => <div key={item.id}>
-                                <Item nombre={item.nombre}
-                                    precio={item.precio}
-                                    img={item.img}
-                                    stock={item.stock}
-                                    id={item.id}
-                                />
-                            </div>
+    <div className="contenedor card__flex">
+        {loading ? <span class="loader"></span> 
+            : items.map((item => <div key={item.id}>
+                                    <Item nombre={item.nombre}
+                                        precio={item.precio}
+                                        img={item.img}
+                                        stock={item.stock}
+                                        id={item.id}
+                                    />
+                                 </div>
+            
                 
         ))}
     </div>

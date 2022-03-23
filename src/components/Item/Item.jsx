@@ -6,11 +6,11 @@ function Item({nombre, precio, img, stock, id}) {
   return (
     
     <div className="card">
-        <img src={img} className="card-img-top"/>
-        <div className="card-body">
-            <h5 className="card-title">{nombre}</h5>
-            <p className="card-text">{precio}</p>
-            <ItemCount stock={stock} inicio={1}/>
+        <img src={img} className="card__img"/>
+        <div className="card__body">
+            <h5 className="card__title">{nombre}</h5>
+            <p className="card__price">${precio}</p>
+            <ItemCount stock={stock} inicio={0}/>
         </div>
     </div>
   )
