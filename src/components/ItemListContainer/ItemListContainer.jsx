@@ -1,11 +1,12 @@
 import React from 'react'
+import ItemList from '../ItemList/ItemList'
 
-function ItemListContainer({titulo, children}) {
+function ItemListContainer({titulo}) {
     
   return (
     <>
-      <h1>{titulo}</h1>
-      <div>{children}</div>
+      <h2>{titulo}</h2>
+      <ItemList />
     </>
   )
 }
