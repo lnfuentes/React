@@ -1,32 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import { productos } from '../../data/Productos'
+import React from 'react'
 import Item from '../Item/Item';
 
-function ItemList() {
-    const [items, setItems] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    const getProductos = new Promise((resolve, reject) =>{
-        setTimeout(()=>{
-            resolve(productos);
-        }, 2000)
-    })
-
-    const getProductosData = async() => {
-        try {
-            const data = await getProductos;
-            setItems(data);
-            setLoading(false);
-        } catch (error) {
-            console.log(error);
-            alert('Los productos no cargaron correctamente');
-        }
-    }
-
-    useEffect(() => {
-        getProductosData();
-    }, []);
-
+function ItemList({items, loading}) {
 
   return (
 

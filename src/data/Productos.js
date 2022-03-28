@@ -63,3 +63,9 @@ export const productos = [
         id: 9
     }
 ]
+
+export const getProductos = new Promise((resolve, reject) =>{
+    setTimeout(()=>{
+        resolve(productos);
+    }, 2000)
+})
