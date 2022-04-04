@@ -10,7 +10,9 @@ import './components/ItemCount/ItemCount.css'
 import './components/ItemList/ItemList.css'
 import './components/Item/Item.css'
 import './components/ItemDetail/ItemDetail.css'
+import './components/Intercambiabilidad/Intercambiabilidad.css'
 import './App.css';
+import Carrito from './components/Carrito/Carrito';
 
 function App() {
   return (
@@ -21,8 +23,10 @@ function App() {
           <Route path='/' element={<ItemListContainer titulo='Nuestros Productos' />} />
           <Route path='/categoria/:categoriaId' element={<ItemListContainer titulo='Nuestros Productos' />} />
           <Route path='/detalle/:detalleId' element={<ItemDetailContainer />} />
+          <Route path='/carrito' element={<Carrito />} />
         </Routes>
       </BrowserRouter>
+      
     </div>
   );
 }
