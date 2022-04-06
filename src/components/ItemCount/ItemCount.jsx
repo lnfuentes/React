@@ -2,16 +2,17 @@ import React from 'react';
 import { useState } from 'react';
 import Intercambiabilidad from '../Intercambiabilidad/Intercambiabilidad';
 
-const ItemCount = ({stock, inicio}) => {
+const ItemCount = ({stock, inicio, onAdd}) => {
     const [contador, setContador] = useState(inicio);
 
     const añadirContador = num => {
         setContador(contador + num);
     }
 
-    const añadir = (add) => {
-        alert(`añadiste ${add} productos`);
-    } 
+    const agregar = () => {
+        onAdd( contador )
+    }
+
 
   return (
     <div className='contenedor__count'>
@@ -26,9 +27,14 @@ const ItemCount = ({stock, inicio}) => {
                         disabled={contador === stock ? true : null}>
                     +
                 </button>   
+
             </div>
-            {/* contador={contador} añadir={añadir} */}
-            <Intercambiabilidad contador={contador}/>
+            <button className='count__añadir' 
+                    onClick={agregar}
+                    disabled={contador === 0 ? true : null}
+            >Añadir
+            </button>
+            {/* <Intercambiabilidad contador={contador} onAdd={onAdd}/> */}
         </div>
     </div>
   )

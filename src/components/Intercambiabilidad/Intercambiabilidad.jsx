@@ -22,12 +22,12 @@ const InputCount = () => {
   )
 }
 
-function Intercambiabilidad({contador}) {
+function Intercambiabilidad({contador, onAdd}) {
 
   const ButtonCount = ({handleInter}) => {
     return(
       <button className='count__añadir' 
-              onClick={handleInter}
+              onClick={onAdd}
               disabled={contador === 0 ? true : null}
       >Añadir
       </button>

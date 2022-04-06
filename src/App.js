@@ -13,18 +13,22 @@ import './components/ItemDetail/ItemDetail.css'
 import './components/Intercambiabilidad/Intercambiabilidad.css'
 import './App.css';
 import Carrito from './components/Carrito/Carrito';
+import CartContextProvider, { CartContext } from './context/CartContext';
+
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <NavBar />  
-        <Routes>
-          <Route path='/' element={<ItemListContainer titulo='Nuestros Productos' />} />
-          <Route path='/categoria/:categoriaId' element={<ItemListContainer titulo='Nuestros Productos' />} />
-          <Route path='/detalle/:detalleId' element={<ItemDetailContainer />} />
-          <Route path='/carrito' element={<Carrito />} />
-        </Routes>
+        <CartContextProvider>
+          <NavBar />  
+          <Routes>
+            <Route path='/' element={<ItemListContainer titulo='Nuestros Productos' />} />
+            <Route path='/categoria/:categoriaId' element={<ItemListContainer titulo='Nuestros Productos' />} />
+            <Route path='/detalle/:detalleId' element={<ItemDetailContainer />} />
+            <Route path='/carrito' element={<Carrito />} />
+          </Routes>
+        </CartContextProvider>
       </BrowserRouter>
       
     </div>
