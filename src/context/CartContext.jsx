@@ -12,13 +12,11 @@ function CartContextProvider({children}) {
         if(isInCart(item.id)) {
             const actualizarProd = [...cartList];
             actualizarProd.map(element => {
-                console.log(element)
                 if(element.id === item.id){
-                    console.log(element.cantidad)
-                    console.log(cantidad)
+                    element.cantidad += cantidad;
                 }
             });
-            setCartList(actualizarProd);
+            setCartList(actualizarProd)
         }
         setCartList([
             ...cartList,

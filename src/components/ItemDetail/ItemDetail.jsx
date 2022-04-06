@@ -8,10 +8,9 @@ function ItemDetail({producto, stock}) {
   const onAdd = (cant) => {
     addToCart({
       ...producto,
-      cantidad: cant
-    })
+      cantidad: cant,
+    }, cant)
   }
-  
   return (
     <>
         <div className="contenedor flex">
