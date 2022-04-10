@@ -11,6 +11,7 @@ const ItemCount = ({stock, inicio, onAdd}) => {
 
     const agregar = () => {
         onAdd( contador )
+        setContador(inicio);
     }
 
 

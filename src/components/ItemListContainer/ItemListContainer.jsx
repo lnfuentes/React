@@ -42,7 +42,7 @@ function ItemListContainer({titulo}) {
   return (
     <>
       <h2>{titulo}</h2>
-      {loading ? <span class="loader"></span> : <ItemList items={items}/>}
+      {loading ? <span className="loader"></span> : <ItemList items={items}/>}
     </>
   )
 }
