@@ -11,6 +11,7 @@ import './components/ItemList/ItemList.css'
 import './components/Item/Item.css'
 import './components/ItemDetail/ItemDetail.css'
 import './components/Intercambiabilidad/Intercambiabilidad.css'
+import './components/Carrito/Carrito.css'
 import './App.css';
 import Carrito from './components/Carrito/Carrito';
 import CartContextProvider, { CartContext } from './context/CartContext';

@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import { sumaTotal } from "../components/SumaTotal/SumaTotal";
 
 
 export const CartContext = createContext([]);
@@ -16,13 +17,13 @@ function CartContextProvider({children}) {
             
             actualizarProd.map((element) => {
             
-            if (element.id === item.id) {
+                if (element.id === item.id) {
+                
+                    element.cantidad += cantidad;
+                
+                }
             
-                element.cantidad += cantidad;
-            
-            }
-        
-        });
+            });
         
         setCartList(actualizarProd);
         
@@ -31,21 +32,35 @@ function CartContextProvider({children}) {
             setCartList([...cartList, { ...item, cantidad }]);
         
         }
-        
     };
 
     const clear = () => {
         setCartList([])
     }
 
-    const isInCart = (id) => cartList.find(element => element.id === id)
+    const isInCart = (id) => cartList.find(element => element.id === id);
+
+    const eliminar = producto => {
+        let contador = 0;
+        const actualizarCart = [...cartList];
+            
+        actualizarCart.map((element) => {
+            if(element.id === producto.id){
+                actualizarCart.splice(contador, 1);
+            }
+            contador++;
+        });
+
+        setCartList(actualizarCart);
+    }
 
     return(
         <>
             <CartContext.Provider value={{
                 cartList,
                 addToCart,
-                clear
+                clear,
+                eliminar
             }}>
                 {children}
             </CartContext.Provider>
