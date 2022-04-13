@@ -2,47 +2,42 @@ import ItemList from '../ItemList/ItemList'
 import { getProductos } from '../../data/Productos'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-
+import { getFirestoreApp } from '../../firebase/config';
+import {collection, doc, getDoc, getDocs, getFirestore, query, where} from 'firebase/firestore'
 
 function ItemListContainer({titulo}) {
 
-  const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [productos, setProductos] = useState([])
 
   const {categoriaId} = useParams();
 
-  const getProductosData = async() => {
-    if(categoriaId){
-      try {
-        const data = await getProductos;
-        setItems(data.filter(item=> item.categoria === categoriaId));
-        setLoading(false);
-      } catch (error) {
-        console.log(error);
-        alert('Los productos no cargaron correctamente');
-      }
-    } else {
-      try {
-          const data = await getProductos;
-          setItems(data);
-          setLoading(false);
-      } catch (error) {
-          console.log(error);
-          alert('Los productos no cargaron correctamente');
-      }
-    }
-  }
-
-  
-
   useEffect(() => {
-      getProductosData();
-  }, [categoriaId]);
+    if(categoriaId) {
+      const queryDb = getFirestore();
+      const queryCollection = collection(queryDb, 'productos');
+      const queryFilter = query(queryCollection, where('categoria','==', categoriaId))
+  
+      getDocs(queryFilter)
+        .then(resp => setProductos(resp.docs.map(item => ({id: item.id, ...item.data()}) )))
+        .catch(err => console.log(err))
+        .finally(() => setLoading(false))
+    } else {
+      const queryDb = getFirestore();
+      const queryCollection = collection(queryDb, 'productos');
+  
+      getDocs(queryCollection)
+        .then(resp => setProductos(resp.docs.map(item => ({id: item.id, ...item.data()}) )))
+        .catch(err => console.log(err))
+        .finally(() => setLoading(false))
+    }
+  }, [categoriaId])
+
     
   return (
     <>
       <h2>{titulo}</h2>
-      {loading ? <span className="loader"></span> : <ItemList items={items}/>}
+      {loading ? <span className="loader"></span> : <ItemList items={productos}/>}
     </>
   )
 }
