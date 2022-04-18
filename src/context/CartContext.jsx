@@ -54,13 +54,26 @@ function CartContextProvider({children}) {
         setCartList(actualizarCart);
     }
 
+    const precioTotal = ()=> {
+        
+        let total = 0;
+        const carritoFinal = [...cartList];
+        carritoFinal.forEach(element => {
+            const precio = element.precio
+            total = total + precio*element.cantidad;
+        })
+
+        return total;
+    }
+
     return(
         <>
             <CartContext.Provider value={{
                 cartList,
                 addToCart,
                 clear,
-                eliminar
+                eliminar,
+                precioTotal
             }}>
                 {children}
             </CartContext.Provider>

@@ -2,10 +2,45 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { useCartContext } from '../../context/CartContext'
 import SumaTotal from '../SumaTotal/SumaTotal';
+import {addDoc, collection, getDocs, getFirestore} from 'firebase/firestore';
 
 
 function Carrito() {
-  const {cartList, clear, eliminar} = useCartContext();
+  const {cartList, clear, eliminar, precioTotal} = useCartContext();
+
+  const generarOrden = (e) => {
+    e.preventDefault();
+
+    let orden = {};
+
+    orden.buyer = {
+      nombre: 'Leandro',
+      email: 'l@gmail.com',
+      telefono: '123456789'
+    };
+    
+    orden.total = precioTotal();
+
+    orden.productos = cartList.map(cartItem => {
+      const id = cartItem.id;
+      const nombre = cartItem.nombre;
+      const precio = cartItem.precio * cartItem.cantidad;
+      return{id, nombre, precio};
+    })
+    
+
+    const db = getFirestore();
+    const queryCollection = collection(db, 'ordenes');
+
+    getDocs(queryCollection)
+      .then(resp=> resp.docs.forEach(res => alert('tu id de compra es ' + res.id)))
+    
+
+    addDoc(queryCollection, orden)
+      .then(resp => console.log(resp))
+      .catch(err => console.log(err))
+      .finally(clear)
+  }
   
   return (
 
@@ -23,14 +58,14 @@ function Carrito() {
                                       <h4>{prod.nombre}</h4>
                                       <p><span className='detail-final__cantidad'>Cantidad:</span> {prod.cantidad}</p>
                                     </div>
-                                    <button onClick={()=> eliminar(prod)} className='detail-final__borrar'><i class="fas fa-trash"></i></button>
+                                    <button onClick={()=> eliminar(prod)} className='detail-final__borrar'><i className="fas fa-trash"></i></button>
                                   </div>
             )}</div>
             
             <div className="compra">
               <SumaTotal/>
               <button onClick={clear} className='compra__borrar'>Vaciar Carrito</button>
-              <button className='compra__finalizar'>Finalizar Compra</button>
+              <button className='compra__finalizar' onClick={generarOrden}>Finalizar Compra</button>
             </div>
           </div>}
     </>

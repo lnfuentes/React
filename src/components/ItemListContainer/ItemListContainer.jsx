@@ -1,5 +1,4 @@
 import ItemList from '../ItemList/ItemList'
-import { getProductos } from '../../data/Productos'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { getFirestoreApp } from '../../firebase/config';
