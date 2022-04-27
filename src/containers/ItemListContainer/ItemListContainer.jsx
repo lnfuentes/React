@@ -1,13 +1,17 @@
-import ItemList from '../ItemList/ItemList'
+import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import { getFirestoreApp } from '../../firebase/config';
-import {collection, doc, getDoc, getDocs, getFirestore, query, where} from 'firebase/firestore'
+
+import ItemList from '../ItemList/ItemList'
+
+import './ItemListContainer.css'
+
+
 
 function ItemListContainer({titulo}) {
 
   const [loading, setLoading] = useState(true);
-  const [productos, setProductos] = useState([])
+  const [products, setProducts] = useState([])
 
   const {categoriaId} = useParams();
 
@@ -18,7 +22,7 @@ function ItemListContainer({titulo}) {
       const queryFilter = query(queryCollection, where('categoria','==', categoriaId))
   
       getDocs(queryFilter)
-        .then(resp => setProductos(resp.docs.map(item => ({id: item.id, ...item.data()}) )))
+        .then(resp => setProducts(resp.docs.map(item => ({id: item.id, ...item.data()}) )))
         .catch(err => console.log(err))
         .finally(() => setLoading(false))
     } else {
@@ -26,7 +30,7 @@ function ItemListContainer({titulo}) {
       const queryCollection = collection(queryDb, 'productos');
   
       getDocs(queryCollection)
-        .then(resp => setProductos(resp.docs.map(item => ({id: item.id, ...item.data()}) )))
+        .then(resp => setProducts(resp.docs.map(item => ({id: item.id, ...item.data()}) )))
         .catch(err => console.log(err))
         .finally(() => setLoading(false))
     }
@@ -35,8 +39,8 @@ function ItemListContainer({titulo}) {
     
   return (
     <>
-      <h2>{titulo}</h2>
-      {loading ? <span className="loader"></span> : <ItemList items={productos}/>}
+      <h2>{categoriaId ? categoriaId : titulo}</h2>
+      {loading ? <span className="loader"></span> : <ItemList items={products}/>}
     </>
   )
 }

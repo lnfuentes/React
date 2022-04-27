@@ -1,20 +1,10 @@
-import NavBar from './components/NavBar/NavBar';
-import ItemListContainer from './components/ItemListContainer/ItemListContainer';
-import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './components/NavBar/NavBar.css'
-import './components/ItemListContainer/ItemListContainer.css'
-import './components/CartWidget/CartWidget.css'
-import './components/ItemCount/ItemCount.css'
-import './components/ItemList/ItemList.css'
-import './components/Item/Item.css'
-import './components/ItemDetail/ItemDetail.css'
-import './components/Intercambiabilidad/Intercambiabilidad.css'
-import './components/Carrito/Carrito.css'
+import NavBar from './components/NavBar/NavBar';
+import CartContextProvider from './context/CartContext';
+import ItemListContainer from './containers/ItemListContainer/ItemListContainer';
+import ItemDetailContainer from './containers/ItemDetailContainer/ItemDetailContainer';
+import Carrito from './containers/Carrito/Carrito';
 import './App.css';
-import Carrito from './components/Carrito/Carrito';
-import CartContextProvider, { CartContext } from './context/CartContext';
 
 
 function App() {

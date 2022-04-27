@@ -19,5 +19,29 @@
 }
 
 .detail__price{
-    font-size: 30px;
+    font-size: 35px;
+}
+
+.detail__producto{
+    text-align: left;
+    margin-left: 50px; 
+}
+
+.detail__producto h2{
+    color: #000;
+    text-transform: capitalize;
+}
+
+.detail__head{
+    margin-top: 20px;
+    color: #939393;
+}
+
+.detail__star{
+    margin-top: 20px;
+    color: #038C8C;
+}
+
+.detail__star span{
+    color: #000;
 }

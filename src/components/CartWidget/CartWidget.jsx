@@ -4,16 +4,18 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import { useCartContext } from '../../context/CartContext';
 
+import '../CartWidget/CartWidget.css'
+
 
 function CartWidget() {
 
-  const [cartInicio, setCartInicio] = useState(true);
-  const [productosCantidad, setProductosCantidad] = useState(0);
+  
+  const [productsQuantity, setproductsQuantity] = useState(0);
 
   const {cartList} = useCartContext();
 
   useEffect(() => {
-    setProductosCantidad(
+    setproductsQuantity(
       cartList.reduce((previus, current) => previus + current.cantidad, 0)
     )
   }, [cartList])
@@ -22,7 +24,7 @@ function CartWidget() {
   return (
     <Link to='/carrito' className='icono'>
       <FontAwesomeIcon icon={faCartShopping} />
-      {productosCantidad === 0  ? null : <div className='icono__cantidad'>{productosCantidad}</div>}
+      {productsQuantity === 0  ? null : <div className='icono__cantidad'>{productsQuantity}</div>}
     </Link>
   )
 }

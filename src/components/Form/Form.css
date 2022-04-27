@@ -1,0 +1,51 @@
+.nombre, .email, .telefono{
+    padding: 15px;
+    background-color: #fff;
+    margin: 8px;
+    text-align: left;
+    border-radius: 5px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+legend{
+    font-size: 20px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.compra__borrar{
+    background-color: #c60000bd;
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 5px;
+    margin-top: 30px;
+    transition: all .3s ease;
+}
+
+.compra__borrar:hover{
+    background-color: #c60000;
+}
+
+.compra__finalizar{
+    background-color: #019001bd;
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 5px;
+    margin-top: 30px;
+    transition: all .3s ease;
+}
+
+.compra__finalizar:hover{
+    background-color: #019001;
+}
+
+.btn-form{
+    display: flex;
+    margin: 0 10px;
+    justify-content: space-between;
+}

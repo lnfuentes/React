@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import '../Item/Item.css'
+
 
 function Item({nombre, precio, img, id}) {
   return (
@@ -8,12 +10,13 @@ function Item({nombre, precio, img, id}) {
     <div className="card">
         <img src={img} className="card__img"/>
         <div className="card__body">
-            <h5 className="card__title">{nombre}</h5>
-            <p className="card__price">${precio}</p>
-            <Link to={`/detalle/${id}`}>
-              <button className='card__detail'>Mas Detalles</button>
-            </Link>
-            
+            <h3 className="card__title">{nombre}</h3>
+            <div className="card__footer">
+              <p className="card__price">${precio}</p>
+              <Link to={`/detalle/${id}`}>
+                <button className='card__detail'>Más Detalles</button>
+              </Link>
+            </div>
         </div>
     </div>
   )

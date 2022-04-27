@@ -1,5 +1,4 @@
 import { createContext, useContext, useState } from "react";
-import { sumaTotal } from "../components/SumaTotal/SumaTotal";
 
 
 export const CartContext = createContext([]);
@@ -13,9 +12,9 @@ function CartContextProvider({children}) {
 
         if (isInCart(item.id)) {
         
-            const actualizarProd = [...cartList];
+            const updateProduct = [...cartList];
             
-            actualizarProd.map((element) => {
+            updateProduct.map((element) => {
             
                 if (element.id === item.id) {
                 
@@ -25,7 +24,7 @@ function CartContextProvider({children}) {
             
             });
         
-        setCartList(actualizarProd);
+        setCartList(updateProduct);
         
         } else {
         
@@ -40,25 +39,25 @@ function CartContextProvider({children}) {
 
     const isInCart = (id) => cartList.find(element => element.id === id);
 
-    const eliminar = producto => {
-        let contador = 0;
-        const actualizarCart = [...cartList];
+    const remove = product => {
+        let counter = 0;
+        const updateCart = [...cartList];
             
-        actualizarCart.map((element) => {
-            if(element.id === producto.id){
-                actualizarCart.splice(contador, 1);
+        updateCart.map((element) => {
+            if(element.id === product.id){
+                updateCart.splice(counter, 1);
             }
-            contador++;
+            counter++;
         });
 
-        setCartList(actualizarCart);
+        setCartList(updateCart);
     }
 
-    const precioTotal = ()=> {
+    const totalPrice = ()=> {
         
         let total = 0;
-        const carritoFinal = [...cartList];
-        carritoFinal.forEach(element => {
+        const endCart = [...cartList];
+        endCart.forEach(element => {
             const precio = element.precio
             total = total + precio*element.cantidad;
         })
@@ -72,8 +71,8 @@ function CartContextProvider({children}) {
                 cartList,
                 addToCart,
                 clear,
-                eliminar,
-                precioTotal
+                remove,
+                totalPrice
             }}>
                 {children}
             </CartContext.Provider>

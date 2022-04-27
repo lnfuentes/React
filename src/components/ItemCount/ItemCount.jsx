@@ -1,17 +1,20 @@
 import React from 'react';
 import { useState } from 'react';
-import Intercambiabilidad from '../Intercambiabilidad/Intercambiabilidad';
 
-const ItemCount = ({stock, inicio, onAdd}) => {
-    const [contador, setContador] = useState(inicio);
+import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import '../ItemCount/ItemCount.css'
 
-    const añadirContador = num => {
-        setContador(contador + num);
+const ItemCount = ({stock, start, onAdd}) => {
+    const [counter, setCounter] = useState(start);
+
+    const addCounter = num => {
+        setCounter(counter + num);
     }
 
-    const agregar = () => {
-        onAdd( contador )
-        setContador(inicio);
+    const add = () => {
+        onAdd( counter )
+        setCounter(start);
     }
 
 
@@ -19,23 +22,22 @@ const ItemCount = ({stock, inicio, onAdd}) => {
     <div className='contenedor__count'>
         <div className='count'>
             <div className="count__container">
-                <button onClick={()=>añadirContador(- 1)}
-                        disabled={contador === inicio ? true : null}>
+                <button onClick={()=>addCounter(- 1)}
+                        disabled={counter === start ? true : null}>
                     -
                 </button> 
-                <span>{contador}</span>
-                <button onClick={()=>añadirContador(+ 1)}
-                        disabled={contador === stock ? true : null}>
+                <span>{counter}</span>
+                <button onClick={()=>addCounter(+ 1)}
+                        disabled={counter === stock ? true : null}>
                     +
                 </button>   
 
             </div>
             <button className='count__añadir' 
-                    onClick={agregar}
-                    disabled={contador === 0 ? true : null}
-            >Añadir
+                    onClick={add}
+                    disabled={counter === 0 ? true : null}
+            ><FontAwesomeIcon icon={faCartPlus} />
             </button>
-            {/* <Intercambiabilidad contador={contador} onAdd={onAdd}/> */}
         </div>
     </div>
   )

@@ -1,0 +1,39 @@
+.detail-final{
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px 0 0;
+}
+
+.detail-final h3{
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.detail-final p{
+    margin-top: 5px;
+}
+
+.detail-final img{
+    width: 200px;
+    border-radius: 10px 0 0 10px;
+}
+
+.detail-final__cantidad{
+    color: #038C8C;
+    font-weight: 700;
+}
+
+.detail-final__borrar{
+    background-color: transparent;
+    font-size: 30px;
+    color: #b3b3b3;
+    transition: all .2s ease;
+}
+
+.detail-final__borrar:hover{
+    color: #656565;
+}
