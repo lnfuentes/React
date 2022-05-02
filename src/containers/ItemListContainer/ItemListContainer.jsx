@@ -17,24 +17,17 @@ function ItemListContainer({titulo}) {
   const {categoriaId} = useParams();
 
   useEffect(() => {
-    if(categoriaId) {
-      const queryDb = getFirestore();
-      const queryCollection = collection(queryDb, 'productos');
-      const queryFilter = query(queryCollection, where('categoria','==', categoriaId))
-  
-      getDocs(queryFilter)
-        .then(resp => setProducts(resp.docs.map(item => ({id: item.id, ...item.data()}) )))
-        .catch(err => console.log(err))
-        .finally(() => setLoading(false))
-    } else {
-      const queryDb = getFirestore();
-      const queryCollection = collection(queryDb, 'productos');
-  
-      getDocs(queryCollection)
-        .then(resp => setProducts(resp.docs.map(item => ({id: item.id, ...item.data()}) )))
-        .catch(err => console.log(err))
-        .finally(() => setLoading(false))
-    }
+    const queryDb = getFirestore();
+    const queryCollection = collection(queryDb, 'productos');
+    const queryFilter = categoriaId ? 
+                            query(queryCollection, where('categoria','==', categoriaId))
+                        :
+                            queryCollection
+
+    getDocs(queryFilter)
+      .then(resp => setProducts(resp.docs.map(item => ({id: item.id, ...item.data()}) )))
+      .catch(err => console.log(err))
+      .finally(() => setLoading(false))
 
     return () => {
       cleanup();
