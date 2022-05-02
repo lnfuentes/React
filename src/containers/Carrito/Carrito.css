@@ -43,9 +43,15 @@
     padding: 40px;
 }
 
+.compra__contenedor{
+    position: sticky;
+    top: 20px;
+}
+
 .compra__total{
     font-size: 28px;
     text-transform: uppercase;
+    margin-bottom: 50px;
 }
 
 .compra__total span{

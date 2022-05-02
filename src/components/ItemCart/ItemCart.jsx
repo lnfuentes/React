@@ -8,7 +8,7 @@ function ItemCart() {
     const { cartList, remove } = useCartContext();
 
   return (
-    <div>{cartList.map(prod => <div className="detail-final">
+    <div>{cartList.map(prod => <div className="detail-final" key={prod.id}>
                                     <img src={prod.img}/>
                                     <div key={prod.id} className='detail-final__descripcion'> 
                                       <h3>{prod.nombre}</h3>

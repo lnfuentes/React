@@ -23,8 +23,10 @@ function Carrito() {
             <ItemCart />
             
             <div className="compra">
-              <p className='compra__total'>Total a pagar: <span>${totalPrice()}</span></p>
-              <Form />
+              <div className="compra__contenedor">
+                <p className='compra__total'>Total a pagar: <span>${totalPrice()}</span></p>
+                <Form />
+              </div>
             </div>
           </div>}
     </>

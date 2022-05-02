@@ -1,6 +1,12 @@
-.contenedor__count{
+.container{
     display: flex;
-    margin-top: 20px;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.container__count{
+    display: flex;
+    margin-right: 30px;
 }
 
 .count{
@@ -9,7 +15,6 @@
     padding: 5px;
     border: 2px solid #038C8C;
     border-radius: 50px;
-    margin-top: 50px;
 }
 
 .count__añadir{
@@ -40,4 +45,18 @@
 
 .contenedor__count span{
     font-size: 20px;
+}
+
+.go-cart{
+    display: none;
+    color: #fff;
+    background-color: #038C8C;
+    padding: 5px 20px;
+    border-radius: 5px;
+    transition: all .3s ease;
+}
+
+.go-cart:hover{
+    font-size: 20px;
+    margin-left: -6px;
 }

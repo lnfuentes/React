@@ -1,3 +1,4 @@
+import { cleanup } from '@testing-library/react';
 import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
@@ -33,6 +34,10 @@ function ItemListContainer({titulo}) {
         .then(resp => setProducts(resp.docs.map(item => ({id: item.id, ...item.data()}) )))
         .catch(err => console.log(err))
         .finally(() => setLoading(false))
+    }
+
+    return () => {
+      cleanup();
     }
   }, [categoriaId])
 

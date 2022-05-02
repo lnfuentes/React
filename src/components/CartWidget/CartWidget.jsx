@@ -1,3 +1,4 @@
+import { cleanup } from '@testing-library/react';
 import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
@@ -18,6 +19,10 @@ function CartWidget() {
     setproductsQuantity(
       cartList.reduce((previus, current) => previus + current.cantidad, 0)
     )
+
+    return () => {
+      cleanup();
+    }
   }, [cartList])
   
 

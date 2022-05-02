@@ -1,3 +1,4 @@
+import { cleanup } from "@testing-library/react";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -22,7 +23,11 @@ function ItemDetailContainer() {
             }))
             .catch(err => console.log(err))
             .finally(setLoading(false))
-    })
+
+        return () => {
+          cleanup()
+        }
+    },[detalleId])
 
   return (
     <>

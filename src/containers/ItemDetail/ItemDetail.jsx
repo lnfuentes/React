@@ -15,6 +15,7 @@ function ItemDetail({producto, stock}) {
       cantidad: cant,
     }, cant)
   }
+  
   return (
     <>
         <div className="contenedor flex">

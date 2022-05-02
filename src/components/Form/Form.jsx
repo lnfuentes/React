@@ -67,29 +67,27 @@ function Form() {
     }
 
   return (
-    <div className="compra">
-        <form className='form'>
-            <fieldset>
-                <legend>Informacion del Cliente</legend>
-                <div className="nombre">
-                    <label htmlFor="nombre">Nombre:</label>
-                    <input type="text" id='nombre' placeholder='Tu nombre' onChange={(e) => e.target.value.length > 0 ? orden.nombre = true : false}/>
-                </div>
-                <div className="email">
-                    <label htmlFor="email">Email:</label>
-                    <input type="email" id='email' placeholder='Tu email' onChange={(e) => e.target.value.length > 0 ? orden.email = true : false}/>
-                </div>
-                <div className="telefono">
-                    <label htmlFor="telefono">Telefono:</label>
-                    <input type="number" id='telefono' placeholder='Tu telefono' onChange={(e) => e.target.value.length > 0 ? orden.telefono = true : false}/>
-                </div>
-                <div className="btn-form">
-                  <button onClick={clear} className='compra__borrar'>Vaciar Carrito</button>
-                  <input type="submit" className='compra__finalizar' onClick={validateForm} value='Finalizar Compra'/>
-                </div>
-            </fieldset>
-        </form>
-    </div>
+      <form className='form'>
+          <fieldset>
+              <legend>Informacion del Cliente</legend>
+              <div className="nombre">
+                  <label htmlFor="nombre">Nombre:</label>
+                  <input type="text" id='nombre' placeholder='Tu nombre' onChange={(e) => e.target.value.length > 0 ? orden.nombre = true : false}/>
+              </div>
+              <div className="email">
+                  <label htmlFor="email">Email:</label>
+                  <input type="email" id='email' placeholder='Tu email' onChange={(e) => e.target.value.length > 0 ? orden.email = true : false}/>
+              </div>
+              <div className="telefono">
+                  <label htmlFor="telefono">Telefono:</label>
+                  <input type="number" id='telefono' placeholder='Tu telefono' onChange={(e) => e.target.value.length > 0 ? orden.telefono = true : false}/>
+              </div>
+              <div className="btn-form">
+                <button onClick={clear} className='compra__borrar'>Vaciar Carrito</button>
+                <input type="submit" className='compra__finalizar' onClick={validateForm} value='Finalizar Compra'/>
+              </div>
+          </fieldset>
+      </form>
   )
 }
 
